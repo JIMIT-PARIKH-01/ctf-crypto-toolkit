@@ -1,0 +1,6 @@
+# No third-party packages required.
+# The entire toolkit (ciphers, magic auto-decoder, hash ID, GUI, CLI) uses only
+# the Python standard library.
+#
+# Requirements:
+#   - Python 3.8+
