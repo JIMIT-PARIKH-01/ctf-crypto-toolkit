@@ -1,5 +1,10 @@
 # CTF Crypto Toolkit
 
+[![CI](https://github.com/JIMIT-PARIKH-01/ctf-crypto-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/JIMIT-PARIKH-01/ctf-crypto-toolkit/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Tests](https://img.shields.io/badge/tests-27%20passing-brightgreen)
+
 A fast, offline **encoder/decoder + auto-decoder + hash identifier** for CTF and
 security work — with a **GUI and a CLI**, built on the Python standard library
 (zero dependencies).
@@ -73,6 +78,16 @@ ctf-crypto-toolkit/
     ├── run.bat      # double-click launcher
     └── requirements.txt
 ```
+
+## Development
+
+```bash
+pip install -e .          # install (adds the `ctf-toolkit` command)
+pip install pytest
+pytest -q                 # run the test suite (27 tests)
+```
+
+CI runs the full suite on Python 3.9–3.12 on every push (see the badge above).
 
 ## Responsible use
 For CTF, your own systems/labs, and authorized security work only.
