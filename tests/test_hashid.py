@@ -24,6 +24,18 @@ def test_bcrypt():
     assert any("bcrypt" in x.lower() for x in cands)
 
 
+def test_phpass():
+    assert any("phpass" in x for x in hashid.identify("$P$" + "B" * 31))
+
+
+def test_django_pbkdf2():
+    assert any("Django" in x for x in hashid.identify("pbkdf2_sha256$260000$salt$hashvalue=="))
+
+
+def test_ldap_ssha():
+    assert any("SSHA" in x for x in hashid.identify("{SSHA}dGVzdHNhbHQ="))
+
+
 def test_unknown_returns_empty():
     assert hashid.identify("definitely not a hash!") == []
 
