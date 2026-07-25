@@ -177,11 +177,60 @@ def vigenere(s: str, key: str, decode: bool = False) -> str:
 
 
 # --------------------------------------------------------------------------- #
+# Extra encodings: Base85, Base58 (Bitcoin alphabet), and ROT47
+# --------------------------------------------------------------------------- #
+def b85_encode(s: str) -> str:
+    return base64.b85encode(_b(s)).decode("ascii")
+
+
+def b85_decode(s: str) -> str:
+    return base64.b85decode("".join(s.split())).decode("utf-8", "replace")
+
+
+_B58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+
+
+def b58_encode(s: str) -> str:
+    raw = _b(s)
+    n = int.from_bytes(raw, "big")
+    out = ""
+    while n > 0:
+        n, r = divmod(n, 58)
+        out = _B58[r] + out
+    pad = len(raw) - len(raw.lstrip(b"\x00"))
+    return "1" * pad + out
+
+
+def b58_decode(s: str) -> str:
+    s = s.strip()
+    n = 0
+    for ch in s:
+        if ch not in _B58:
+            raise ValueError("invalid base58 character")
+        n = n * 58 + _B58.index(ch)
+    body = n.to_bytes((n.bit_length() + 7) // 8, "big") if n else b""
+    pad = len(s) - len(s.lstrip("1"))
+    return (b"\x00" * pad + body).decode("utf-8", "replace")
+
+
+def rot47(s: str) -> str:
+    # ROT47 rotates printable ASCII 33..126; it is its own inverse.
+    out = []
+    for ch in s:
+        o = ord(ch)
+        out.append(chr(33 + (o - 33 + 47) % 94) if 33 <= o <= 126 else ch)
+    return "".join(out)
+
+
+# --------------------------------------------------------------------------- #
 # Registry of no-key, reversible codecs (used by the CLI/GUI and magic)
 # --------------------------------------------------------------------------- #
 CODECS = {
     "base64": (b64_encode, b64_decode),
     "base32": (b32_encode, b32_decode),
+    "base85": (b85_encode, b85_decode),
+    "base58": (b58_encode, b58_decode),
+    "rot47": (rot47, rot47),
     "hex": (hex_encode, hex_decode),
     "url": (url_encode, url_decode),
     "binary": (binary_encode, binary_decode),

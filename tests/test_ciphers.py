@@ -65,6 +65,19 @@ def test_reverse():
     assert c.reverse("abc") == "cba"
 
 
+def test_base85_roundtrip():
+    assert c.b85_decode(c.b85_encode("flag{85}")) == "flag{85}"
+
+
+def test_base58_roundtrip():
+    assert c.b58_decode(c.b58_encode("Hello, Bitcoin!")) == "Hello, Bitcoin!"
+
+
+def test_rot47_involution_and_known():
+    assert c.rot47(c.rot47("Secret 123!")) == "Secret 123!"
+    assert c.rot47("Hello") == "w6==@"
+
+
 def test_codecs_registry_roundtrips():
     # Morse is case-insensitive (uppercase only), so use an uppercase sample
     # that every registered codec round-trips cleanly.
