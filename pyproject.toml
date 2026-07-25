@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ctf-crypto-toolkit"
+version = "1.0.0"
+description = "CTF crypto toolkit: encoders/decoders, magic auto-decoder, hash ID (GUI + CLI)"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "Jimit Devangkumar Parikh" }]
+keywords = ["ctf", "cryptography", "cipher", "security", "hash"]
+
+[project.urls]
+Homepage = "https://github.com/JIMIT-PARIKH-01/ctf-crypto-toolkit"
+
+[project.scripts]
+ctf-toolkit = "ctf_toolkit.cli:main"
+
+[tool.setuptools]
+packages = ["ctf_toolkit"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
