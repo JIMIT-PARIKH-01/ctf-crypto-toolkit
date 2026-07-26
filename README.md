@@ -92,5 +92,40 @@ CI runs the full suite on Python 3.9–3.12 on every push (see the badge above).
 ## Responsible use
 For CTF, your own systems/labs, and authorized security work only.
 
+## ⬇️ Download & Install
+
+**This is a public tool — download and use it on your device for free.**
+
+```bash
+# 1) Clone it
+git clone https://github.com/JIMIT-PARIKH-01/ctf-crypto-toolkit.git
+cd ctf-crypto-toolkit
+
+# 2) ...or download a ZIP (no git needed)
+#    https://github.com/JIMIT-PARIKH-01/ctf-crypto-toolkit/archive/refs/heads/main.zip
+
+# 3) ...or install the command straight from GitHub
+pip install git+https://github.com/JIMIT-PARIKH-01/ctf-crypto-toolkit.git
+```
+
+Then run it as shown in the usage section above (CLI `python -m ...`, or launch
+the GUI via `run.bat`).
+
+<details>
+<summary><b>🔒 Requesting access to a private tool</b></summary>
+
+Public tools install with the commands above. If a tool is **private**, access
+is granted by the owner through GitHub — a static link cannot unlock private
+code, only GitHub can:
+
+1. **Request access** — open an [access request](https://github.com/JIMIT-PARIKH-01/JIMIT-PARIKH-01/issues/new?template=tool-access-request.md&title=Access+request:+ctf-crypto-toolkit) or message on
+   [LinkedIn](https://www.linkedin.com/in/jimit-devangkumar-parikh/).
+2. The owner reviews it and, if approved, **adds you as a collaborator** on the
+   private repository.
+3. GitHub then lets you clone / download it with your own account. Access is
+   revoked the moment the owner removes you as a collaborator.
+
+</details>
+
 ## License
 MIT — see [LICENSE](./LICENSE).
