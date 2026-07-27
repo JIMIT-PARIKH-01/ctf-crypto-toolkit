@@ -13,6 +13,8 @@ Made for CTF challenges, your own labs, and learning. 🚩
 
 ---
 
+![demo](docs/demo.png)
+
 ## Features
 
 - **Encodings:** Base64, Base32, Hex, URL, Binary, Decimal, Morse
